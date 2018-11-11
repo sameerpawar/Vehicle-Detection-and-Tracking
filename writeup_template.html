@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   ::selection,a::selection{background:rgba(255,255,0,.3)}a,a::selection{color:#0645ad}hr,img{border:0}a,ins{text-decoration:none}::selection,ins,mark{color:#000}dfn,mark{font-style:italic}hr,ol,p,ul{margin:1em 0}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}hr,pre code,table,table tr{padding:0}pre,pre code{white-space:pre}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif;font-size:12px;line-height:1.5em;padding:1em;margin:auto;max-width:42em;background:#fefefe}a:visited{color:#0b0080}a:hover{color:#06e}a:active{color:#faa700}a:focus{outline:dotted thin}a:active,a:hover{outline:0}::-moz-selection{background:rgba(255,255,0,.3);color:#000}a::-moz-selection{background:rgba(255,255,0,.3);color:#0645ad}img{max-width:100%;-ms-interpolation-mode:bicubic;vertical-align:middle}h1,h2,h3,h4,h5,h6{font-weight:400;color:#111;line-height:1em}b,h4,h5,h6,mark,strong,table tr th{font-weight:700}h1{font-size:2.5em}h2{font-size:2em}h3{font-size:1.5em}h4{font-size:1.2em}h5{font-size:1em}h6{font-size:.9em}blockquote{color:#666;margin:0;padding-left:3em;border-left:.5em #EEE solid}hr{display:block;height:2px;border-top:1px solid #aaa;border-bottom:1px solid #eee}code,kbd,pre,samp{color:#000;font-family:monospace,monospace;font-size:.98em}pre{white-space:pre-wrap;word-wrap:break-word}ins{background:#ff9}mark{background:#ff0}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{padding:0 0 0 2em}li p:last-child{margin:0}dd{margin:0 0 0 2em}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}@media only screen and (min-width:480px){body{font-size:14px}}@media only screen and (min-width:768px){body{font-size:16px}}@media print{blockquote,img,pre,tr{page-break-inside:avoid}*{background:0 0!important;color:#000!important;filter:none!important;-ms-filter:none!important}body{font-size:12pt;max-width:100%}a,a:visited{text-decoration:underline}hr{height:1px;border:0;border-bottom:1px solid #000}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;padding-right:1em}img{max-width:100%!important}@page :left{margin:15mm 20mm 15mm 10mm}@page :right{margin:15mm 10mm 15mm 20mm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;border:none;background:0 0}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h2 id="writeup-template">
+   Writeup Template
+  </h2>
+  <h3 id="you-can-use-this-file-as-a-template-for-your-writeup-if-you-want-to-submit-it-as-a-markdown-file-but-feel-free-to-use-some-other-method-and-submit-a-pdf-if-you-prefer">
+   You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+  </h3>
+  <hr/>
+  <p>
+   <strong>
+    Vehicle Detection Project
+   </strong>
+  </p>
+  <p>
+   The goals / steps of this project are the following:
+  </p>
+  <ul>
+   <li>
+    Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
+   </li>
+   <li>
+    Optionally, you can also apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector.
+   </li>
+   <li>
+    Note: for those first two steps don’t forget to normalize your features and randomize a selection for training and testing.
+   </li>
+   <li>
+    Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
+   </li>
+   <li>
+    Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
+   </li>
+   <li>
+    Estimate a bounding box for vehicles detected.
+   </li>
+  </ul>
+  <h2 id="rubric-points">
+   <a href="https://review.udacity.com/#!/rubrics/513/view">
+    Rubric
+   </a>
+   Points
+  </h2>
+  <h3 id="here-i-will-consider-the-rubric-points-individually-and-describe-how-i-addressed-each-point-in-my-implementation">
+   Here I will consider the rubric points individually and describe how I addressed each point in my implementation.
+  </h3>
+  <hr/>
+  <h3 id="writeup-readme">
+   Writeup / README
+  </h3>
+  <h4 id="1-provide-a-writeup-readme-that-includes-all-the-rubric-points-and-how-you-addressed-each-one-you-can-submit-your-writeup-as-markdown-or-pdf-here-is-a-template-writeup-for-this-project-you-can-use-as-a-guide-and-a-starting-point">
+   1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.
+   <a href="https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md">
+    Here
+   </a>
+   is a template writeup for this project you can use as a guide and a starting point.
+  </h4>
+  <p>
+   You’re reading it!
+  </p>
+  <h3 id="histogram-of-oriented-gradients-hog">
+   Histogram of Oriented Gradients (HOG)
+  </h3>
+  <h4 id="1-explain-how-and-identify-where-in-your-code-you-extracted-hog-features-from-the-training-images">
+   1. Explain how (and identify where in your code) you extracted HOG features from the training images.
+  </h4>
+  <p>
+   The code for this step is contained in the cell-2 of the IPython notebook VehicleDetection.ipynb.
+  </p>
+  <p>
+   I started by reading in all the
+   <code>
+    vehicle
+   </code>
+   and
+   <code>
+    non-vehicle
+   </code>
+   images.  Here is an example of one of each of the
+   <code>
+    vehicle
+   </code>
+   and
+   <code>
+    non-vehicle
+   </code>
+   classes:
+  </p>
+  <p>
+   <img alt="alt text" src="./examples/car_not_car_example.png"/>
+  </p>
+  <p>
+   I then explored different color spaces and different
+   <code>
+    skimage.hog()
+   </code>
+   parameters (
+   <code>
+    orientations
+   </code>
+   ,
+   <code>
+    pixels_per_cell
+   </code>
+   , and
+   <code>
+    cells_per_block
+   </code>
+   ).  I grabbed random images from each of the two classes and displayed them to get a feel for what the
+   <code>
+    skimage.hog()
+   </code>
+   output looks like.
+  </p>
+  <p>
+   Here is an example using the
+   <code>
+    YCrCb
+   </code>
+   color space and HOG parameters of
+   <code>
+    orientations=9
+   </code>
+   ,
+   <code>
+    pixels_per_cell=(8, 8)
+   </code>
+   and
+   <code>
+    cells_per_block=(2, 2)
+   </code>
+   :
+  </p>
+  <p>
+   <img alt="alt text" src="./examples/HOG_features_YCrCb_car_not_car.png"/>
+  </p>
+  <h4 id="2-explain-how-you-settled-on-your-final-choice-of-hog-parameters">
+   2. Explain how you settled on your final choice of HOG parameters.
+  </h4>
+  <p>
+   I tried various combinations of parameters and didnt see much gain in increasing the HOG feature vector dimension so chose the default settings from lectures of
+   <code>
+    orientations=9
+   </code>
+   ,
+   <code>
+    pixels_per_cell=(8, 8)
+   </code>
+   and
+   <code>
+    cells_per_block=(2, 2)
+   </code>
+  </p>
+  <h4 id="3-describe-how-and-identify-where-in-your-code-you-trained-a-classifier-using-your-selected-hog-features-and-color-features-if-you-used-them">
+   3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
+  </h4>
+  <p>
+   I trained a linear SVM using LinearSVC(). The corresponding code can be found in cell-3 of the IPython notebook VehicleDetection.ipynb.
+  </p>
+  <p>
+   I used LinearSVC() with YCrCb color space, HOG features for all channels with parameters
+   <code>
+    orientations=9
+   </code>
+   ,
+   <code>
+    pixels_per_cell=(8, 8)
+   </code>
+   and
+   <code>
+    cells_per_block=(2, 2)
+   </code>
+   , color histogram as well as spatial binning feature.
+  </p>
+  <p>
+   When tested the stand alone SVM classifier on test data, I found following performance
+   <br/>
+   1. YCrCb
+   <br/>
+   - test performance = 0.9840
+   <br/>
+   1. LUV
+   <br/>
+   - test performance = 0.9893
+   <br/>
+   1. HSV
+   <br/>
+   - test performance = 0.9907
+   <br/>
+   1. YUV
+   <br/>
+   - test performance = 0.9870
+   <br/>
+   1. HLS
+   <br/>
+   - test performance = 0.9831
+   <br/>
+   1. RGB
+   <br/>
+   - test performance = 0.9780
+  </p>
+  <p>
+   While the stand alone performance of all the color spaces is not much different, I found that when test on video frames YCrCb performed best while trading off between false alarm and missed detection.
+  </p>
+  <h3 id="sliding-window-search">
+   Sliding Window Search
+  </h3>
+  <h4 id="1-describe-how-and-identify-where-in-your-code-you-implemented-a-sliding-window-search-how-did-you-decide-what-scales-to-search-and-how-much-to-overlap-windows">
+   1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+  </h4>
+  <p>
+   Sliding window search is implemented in cell-1 in the function find_cars().
+  </p>
+  <p>
+   I used 3 scale values [1, 1.5, 4]. I also used a region of interest in form of
+  </p>
+  <pre><code>    xstart = 250
+    xstop = 1280
+    ystart = 400
+    ystop_array  = [550, 550, 650]
+</code></pre>
+  <p>
+   where ystop values are chosen based on scale.
+  </p>
+  <h4 id="2-show-some-examples-of-test-images-to-demonstrate-how-your-pipeline-is-working-what-did-you-do-to-optimize-the-performance-of-your-classifier">
+   2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+  </h4>
+  <p>
+   I searched on three scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here is an example image where the two cars are detected.
+  </p>
+  <h2 id="_1">
+   <img alt="alt text" src="./examples/video_frame_car_detected.png"/>
+  </h2>
+  <h3 id="video-implementation">
+   Video Implementation
+  </h3>
+  <h4 id="1-provide-a-link-to-your-final-video-output-your-pipeline-should-perform-reasonably-well-on-the-entire-project-video-somewhat-wobbly-or-unstable-bounding-boxes-are-ok-as-long-as-you-are-identifying-the-vehicles-most-of-the-time-with-minimal-false-positives">
+   1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
+  </h4>
+  <p>
+   Here’s a
+   <a href="./test_videos_output/project_video.mp4">
+    link to my video result
+   </a>
+  </p>
+  <h4 id="2-describe-how-and-identify-where-in-your-code-you-implemented-some-kind-of-filter-for-false-positives-and-some-method-for-combining-overlapping-bounding-boxes">
+   2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
+  </h4>
+  <p>
+   I implemented a class called BboxHistory() in cell-1 of the code. In this class I keep track of two lists. First is the list of bounding boxes detected positively by classifier as cars and second is the list of cars detected so far. I use a threshold on the first list to eliminate the false alarms. Sometimes the threshold elimination on first list can result in loss of previously detected car. So I use the second list to keep track of the detected cars position and apply a lower threshold to heatmap after masking with only car locations detected in earlier frames.
+  </p>
+  <hr/>
+  <h3 id="discussion">
+   Discussion
+  </h3>
+  <h4 id="1-briefly-discuss-any-problems-issues-you-faced-in-your-implementation-of-this-project-where-will-your-pipeline-likely-fail-what-could-you-do-to-make-it-more-robust">
+   1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+  </h4>
+  <p>
+   Essentially in this project I rely on setting correct thresholds to eliminate false alarms without compromising the missed detection rate. I also use averaging over past frames for both eliminating false alarm as well as cleaning heatmap for previously detected cars. This approach does not seem very friendly for generalization to various real world scenarios. Especially I am concerned about any technique that relies on thresholding. I think future direction to pursue would be to see what deep learning based approach gives.
+  </p>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
